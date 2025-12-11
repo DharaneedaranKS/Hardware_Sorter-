@@ -1,11 +1,11 @@
 # Hardware_Sorter
 
 The algorithm is : 
-It is serialized using a shift register, after which a sorting node queue is proposed. The queue is made up of pairs of nodes li (left) and ri (right). In each cycle, a value pi enters the node pair from the left, and it decides the following: 
-• If li is empty, then Li ← Pi. 
-• If Pi ≤ Li, then Ri ← li and Li ← Pi. 
-• If Pi > Li, then Ri ← Pi. 
-• Ri is always pushed to the right as Pi+1 In this way, the lowest and newest values are kept at the leftmost nodes.
+It is serialized using a shift register, after which a sorting node queue is proposed. The queue is made up of pairs of nodes li (left) and ri (right). In each cycle, a value pi enters the node pair from the left, and it decides the following: <br>
+• If li is empty, then Li ← Pi. <br>
+• If Pi ≤ Li, then Ri ← li and Li ← Pi. <br>
+• If Pi > Li, then Ri ← Pi. <br>
+• Ri is always pushed to the right as Pi+1 In this way, the lowest and newest values are kept at the leftmost nodes. <br>
 
 When all values have been inputted, we can be sure that l0 contains the lowest value, while the rest of the values are partially sorted. At this point, a signal activates that flips the behavior. Nodes now output to the left instead of the right, with li and ri exchanging jobs. Now ri will keep the highest input value, while pushing lower values to li−1. This ensures that the output is ordered. However, in the event of ties, this approach favors the latest inputs.
 
