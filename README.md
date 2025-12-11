@@ -18,17 +18,17 @@ The total cost for this step is N cycles to fill the queue, and another N to emp
 This is typically a compare-swap element. It performs:
 
 Core Function
-`if (a > b)  
+<pre> ```if (a > b)  
     swap a and b  
 else  
-    leave them unchanged`
+    leave them unchanged ``` </pre>
 
 
 And it also propagate index along with data:
 
-`if (data[i] > data[j])
+<pre> ```if (data[i] > data[j])
     swap(data[i], data[j])
-    swap(index[i], index[j])`
+    swap(index[i], index[j]) ``` </pre>
 
 
 This allows you to output sorted indices instead of sorted values.
@@ -38,15 +38,13 @@ Parameters Usually Inside sort_node_act
 Common parameters include:
 
 #### Parameter	Meaning
-DATA_W	Bit-width of each input data word.
-IDX_W	Bit-width of the index value.
-SIGNED / UNSIGNED	Whether values are interpreted as signed integers.
-PIPELINE	Whether compare-swap is combinational or pipelined.
+DATA_W	Bit-width of each input data word. <br>
+IDX_W	Bit-width of the index value. <br>
+SIGNED / UNSIGNED	Whether values are interpreted as signed integers. <br>
+PIPELINE	Whether compare-swap is combinational or pipelined. <br>
 
 Function:
-A sort node takes two inputs, performs the compare-swap, and outputs the sorted pair.
-
-This is the only building block required for most hardware sorting networks.
+A sort node takes two inputs, performs the compare-swap, and outputs the sorted pair. This is the only building block required for most hardware sorting networks.
 
 ### Serial Sorter (serial_sorter.sv)
 
@@ -59,11 +57,10 @@ Its role is to:
 - Use one compare-swap node per cycle, addressing the array sequentially.
 - After enough passes, output all sorted values and indices.
 
-#### Typical Parameters Inside serial_sorter.sv
-Parameter	Meaning
-NUM_ELEM	Number of values to be sorted.
-DATA_W	Width of each probability / data value.
-IDX_W	Width of the index tag.
-SORT_ASC / SORT_DESC	Sorting direction (if implemented).
-PIPE_STAGES	Number of pipeline stages for the node.
-LOOP_COUNT	Number of compare-swap rounds needed for sorting (generally NUM_ELEM - 1).
+#### Parameter	Meaning 
+NUM_ELEM	Number of values to be sorted. <br>
+DATA_W	Width of each probability / data value. <br>
+IDX_W	Width of the index tag. <br>
+SORT_ASC / SORT_DESC	Sorting direction (if implemented). <br>
+PIPE_STAGES	Number of pipeline stages for the node. <br>
+LOOP_COUNT	Number of compare-swap rounds needed for sorting (generally NUM_ELEM - 1). 
