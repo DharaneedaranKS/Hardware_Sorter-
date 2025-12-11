@@ -18,17 +18,17 @@ The total cost for this step is N cycles to fill the queue, and another N to emp
 This is typically a compare-swap element. It performs:
 
 Core Function
-<pre> ```if (a > b)  
+<pre> if (a > b)  
     swap a and b  
 else  
-    leave them unchanged ``` </pre>
+    leave them unchanged  </pre>
 
 
 And it also propagate index along with data:
 
-<pre> ```if (data[i] > data[j])
+<pre> if (data[i] > data[j])
     swap(data[i], data[j])
-    swap(index[i], index[j]) ``` </pre>
+    swap(index[i], index[j]) </pre>
 
 
 This allows you to output sorted indices instead of sorted values.
